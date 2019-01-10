@@ -139,11 +139,13 @@ enum class SerialButton {
 
 int sendInputsSerial(int fd, const AllInputs& ai, const AllInputs& prev_ai)
 {
+    std::cerr << "!!! serial write called:" << std::endl;
     if (fd < 0)
         return 0;
 
     char rbyte = 0;
     while (rbyte != 0x0f) {
+        std::cerr << "!!! Enter read loop" << std::endl;
         int rdlen = read(fd, &rbyte, 1);
         if (rdlen != 1) {
             std::cerr << "!!! Could not read device:" << strerror(errno) << std::endl;
