@@ -214,6 +214,8 @@ int sendInputsSerial(int fd, const AllInputs& ai, const AllInputs& prev_ai)
             if (wlen != 3) {
                 std::cerr << "!!! Could not write inputs to device:" << strerror(errno) << std::endl;
                 return -1;
+            }else{
+                std::cerr << "!!! Buttons written:" << strerror(errno) << std::endl;
             }
         }
     }
