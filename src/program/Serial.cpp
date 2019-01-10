@@ -210,7 +210,8 @@ int sendInputsSerial(int fd, const AllInputs& ai, const AllInputs& prev_ai)
             }
 
             /* Send inputs */
-            unsigned char wcmd[3] = {0x0f, static_cast<unsigned char>(buttons >> 8), static_cast<unsigned char>(buttons & 0xff)};
+            //unsigned char wcmd[3] = {0x0f, static_cast<unsigned char>(buttons >> 8), static_cast<unsigned char>(buttons & 0xff)};
+            unsigned char wcmd[3] = {0xf, 0x02, 0x20};
             std::cerr << "--- Sending input bytes " << std::hex << (unsigned int)wcmd[0] << " " << (unsigned int)wcmd[1] << " " << (unsigned int)wcmd[2] << std::endl;
             int wlen = write(fd, &wcmd, 3);
             if (wlen != 3) {
